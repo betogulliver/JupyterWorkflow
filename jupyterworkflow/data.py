@@ -27,7 +27,7 @@ def get_freemont_data(filename="Freemont.csv", url=FREEMONT_URL,
         urlretrieve(url, filename)
     data = pd.read_csv("Freemont.csv", index_col="Date")#, parse_dates=True) # XXX: sloooooow
     try:
-        data.index = pd.to_datetime(data.index, format="%m/%d/%Y %H:%M:%S %p")
+        data.index = pd.to_datetime(data.index, format="%m/%d/%Y %I:%M:%S %p") # XXX: fast
     except TypeError:
         data.index = pd.to_datetime(data.index)
         
